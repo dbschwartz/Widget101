@@ -1,0 +1,198 @@
+openapi: 3.0.1
+info:
+  title: Widget101
+  description: Widget101
+  version: 1.0.0
+servers:
+  - url: /api/v1
+tags:
+  - name: Agent
+    description: Agent Endpoints
+  - name: Customers
+    description: Customer Endpoints
+paths:
+  /agent/allAgents:
+    get:
+      tags:
+        - Agent
+      description: Fetch all examples
+      responses:
+        200:
+          description: Return the example with the specified id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Example'
+        4XX:
+          description: Example not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: Example not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+  
+  /agent/addAgent:
+    post:
+      tags:
+        - Agent
+      description: Create a new example
+      requestBody:
+        description: an example
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentBody'
+            example: 
+              _id: 1988
+              name: Elon Musk
+              address: 100 Tesla St.
+              state: CA
+              zipcode: 90210
+              tier: 2
+              phone: 
+                primary: 323-555-1212
+                mobile: 323-333-3333
+        required: true
+      responses:
+        201:
+          description: Return the example with the specified id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentBody'
+        4XX:
+          description: Example not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: Example not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /agent/{_id}:
+    get:
+      tags:
+        - Agent
+      parameters:
+        - name: _id
+          in: path
+          description: The id of the example to retrieve
+          required: true
+          schema:
+            type: integer
+          example: 1987
+      responses:
+        200:
+          description: Return the example with the specified id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Example'
+        4XX:
+          description: Example not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        5XX:
+          description: Example not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /spec:
+    get:
+      tags:
+        - Customers
+      responses:
+        200:
+          description: Return the API specification
+          content: {}
+components:
+  schemas:
+    Example:
+      type: object
+      properties:
+        _id:
+          type: integer
+          example: 3
+        name:
+          type: string
+          example: John Doe
+        address:
+          type: string
+          example: 123 Main Street #200
+        state:
+          type: string
+          example: WA
+        zipcode:
+          type: string
+          example: 98101
+        tier:
+          type: integer
+          example: 2
+        phone:
+          type: object
+          properties:
+            primary:
+              type: string
+              example: 206-221-2345
+            mobile:
+              type: string
+              example: 206-555-3211
+              
+
+    Error:
+      type: object
+      additionalProperties: true
+
+    AgentBody:
+      title: example
+      required:
+        - _id
+        - name
+        - address
+        - state
+        - zipcode
+        - tier
+        - phone
+      type: object
+      properties:
+        _id:
+          type: integer
+          example: 1988
+        name:
+          type: string
+          example: Elon Musk
+        address:
+          type: string
+          example: 100 Tesla St.
+        state:
+           type: string
+           example: CA
+        zipcode:
+           type: string
+           example: 90210
+        tier:
+            type: integer
+            example: 2
+        phone:
+            type: object
+            properties:
+              primary:
+                type: string
+                example: 323-555-1212
+              mobile:
+                type: string
+                example: 323-333-3333
