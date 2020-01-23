@@ -5,4 +5,5 @@ export default express
   .Router()
   .post('/addAgent', controller.create)
   .get('/allAgents', controller.all)
-  .get('/:_id', controller.byId);
+  .get('/:_id', controller.byId)
+  .put('/:_id', controller.edit);

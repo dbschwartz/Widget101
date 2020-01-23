@@ -81,7 +81,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /agent/{_id}:
-    get:
+    put:
       tags:
         - Agent
       parameters:
@@ -91,7 +91,24 @@ paths:
           required: true
           schema:
             type: integer
-          example: 1987
+          example: 101
+      requestBody:
+        description: an example
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditBody'
+            example: 
+              _id: 101
+              name: John Dough
+              address: 123 Main Street #200
+              city: Seattle
+              state: WA
+              zipcode: 98101
+              tier: 2
+              phone: 
+                primary: 206-221-2345
+                mobile: 206-555-3211
       responses:
         200:
           description: Return the example with the specified id
@@ -133,6 +150,9 @@ components:
         address:
           type: string
           example: 123 Main Street #200
+        city: 
+          type: string
+          example: Beverly Hills
         state:
           type: string
           example: WA
@@ -163,6 +183,7 @@ components:
         - _id
         - name
         - address
+        - city
         - state
         - zipcode
         - tier
@@ -178,6 +199,43 @@ components:
         address:
           type: string
           example: 100 Tesla St.
+        city:
+          type: string
+          example: Beverly Hills
+        state:
+           type: string
+           example: CA
+        zipcode:
+           type: string
+           example: 90210
+        tier:
+            type: integer
+            example: 2
+        phone:
+            type: object
+            properties:
+              primary:
+                type: string
+                example: 323-555-1212
+              mobile:
+                type: string
+                example: 323-333-3333
+    EditBody:
+      title: example
+      type: object
+      properties:
+        _id:
+          type: integer
+          example: 1988
+        name:
+          type: string
+          example: Elon Musk
+        address:
+          type: string
+          example: 100 Tesla St.
+        city:
+          type: string
+          example: Beverly Hills
         state:
            type: string
            example: CA
