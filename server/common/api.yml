@@ -53,6 +53,7 @@ paths:
               _id: 1988
               name: Elon Musk
               address: 100 Tesla St.
+              city: Beverly Hills
               state: CA
               zipcode: 90210
               tier: 2
