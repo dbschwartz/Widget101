@@ -24,21 +24,20 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Example'
+                  $ref: "#/components/schemas/Example"
         4XX:
           description: Example not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         5XX:
           description: Example not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-    
-  
+                $ref: "#/components/schemas/Error"
+
   /agent/addAgent:
     post:
       tags:
@@ -49,15 +48,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgentBody'
-            example: 
+              $ref: "#/components/schemas/AgentBody"
+            example:
               _id: 1988
               name: Elon Musk
               address: 100 Tesla St.
               state: CA
               zipcode: 90210
               tier: 2
-              phone: 
+              phone:
                 primary: 323-555-1212
                 mobile: 323-333-3333
         required: true
@@ -67,19 +66,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AgentBody'
+                $ref: "#/components/schemas/AgentBody"
         4XX:
           description: Example not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         5XX:
           description: Example not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /agent/{_id}:
     put:
       tags:
@@ -97,8 +96,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EditBody'
-            example: 
+              $ref: "#/components/schemas/EditBody"
+            example:
               _id: 101
               name: John Dough
               address: 123 Main Street #200
@@ -106,7 +105,7 @@ paths:
               state: WA
               zipcode: 98101
               tier: 2
-              phone: 
+              phone:
                 primary: 206-221-2345
                 mobile: 206-555-3211
       responses:
@@ -115,23 +114,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Example'
+                $ref: "#/components/schemas/Example"
         4XX:
           description: Example not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         5XX:
           description: Example not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /spec:
     get:
-      tags:
-        - Customers
       responses:
         200:
           description: Return the API specification
@@ -150,7 +147,7 @@ components:
         address:
           type: string
           example: 123 Main Street #200
-        city: 
+        city:
           type: string
           example: Beverly Hills
         state:
@@ -171,12 +168,9 @@ components:
             mobile:
               type: string
               example: 206-555-3211
-              
-
     Error:
       type: object
       additionalProperties: true
-
     AgentBody:
       title: example
       required:
@@ -203,23 +197,23 @@ components:
           type: string
           example: Beverly Hills
         state:
-           type: string
-           example: CA
+          type: string
+          example: CA
         zipcode:
-           type: string
-           example: 90210
+          type: string
+          example: 90210
         tier:
-            type: integer
-            example: 2
+          type: integer
+          example: 2
         phone:
-            type: object
-            properties:
-              primary:
-                type: string
-                example: 323-555-1212
-              mobile:
-                type: string
-                example: 323-333-3333
+          type: object
+          properties:
+            primary:
+              type: string
+              example: 323-555-1212
+            mobile:
+              type: string
+              example: 323-333-3333
     EditBody:
       title: example
       type: object
@@ -237,20 +231,20 @@ components:
           type: string
           example: Beverly Hills
         state:
-           type: string
-           example: CA
+          type: string
+          example: CA
         zipcode:
-           type: string
-           example: 90210
+          type: string
+          example: 90210
         tier:
-            type: integer
-            example: 2
+          type: integer
+          example: 2
         phone:
-            type: object
-            properties:
-              primary:
-                type: string
-                example: 323-555-1212
-              mobile:
-                type: string
-                example: 323-333-3333
+          type: object
+          properties:
+            primary:
+              type: string
+              example: 323-555-1212
+            mobile:
+              type: string
+              example: 323-333-3333
